@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.api.v1 import videos, analysis, topics, reports
 
 app = FastAPI(
-    title="SentiWave AI API",
+    title="Sentira AI API",
     description="AI-Powered Video Sentiment & Bias Intelligence Platform",
     version="1.0.0"
 )
@@ -19,7 +19,7 @@ app.add_middleware(
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to SentiWave AI API", "status": "active"}
+    return {"message": "Welcome to Sentira AI API", "status": "active"}
 
 # Include routers
 app.include_router(videos.router, prefix="/api/v1/videos", tags=["Videos"])

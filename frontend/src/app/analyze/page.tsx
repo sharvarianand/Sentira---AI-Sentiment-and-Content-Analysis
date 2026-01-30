@@ -15,6 +15,7 @@ import {
     Cpu,
     Fingerprint
 } from "lucide-react";
+import { BorderBeam } from "@/components/border-beam";
 
 export default function AnalyzePage() {
     const [activeTab, setActiveTab] = useState('url');
@@ -65,8 +66,8 @@ export default function AnalyzePage() {
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex items-center gap-4 px-8 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all border-2 ${activeTab === tab.id
-                                    ? 'bg-aurora-cyan border-aurora-cyan text-black shadow-[0_0_30px_rgba(0,242,254,0.3)] scale-105'
-                                    : 'bg-white/5 border-white/5 text-white/30 hover:bg-white/10'
+                                ? 'bg-aurora-cyan border-aurora-cyan text-black shadow-[0_0_30px_rgba(0,242,254,0.3)] scale-105'
+                                : 'bg-white/5 border-white/5 text-white/30 hover:bg-white/10'
                                 }`}
                         >
                             {tab.icon} {tab.label}
@@ -83,6 +84,7 @@ export default function AnalyzePage() {
                         exit={{ opacity: 0, y: -20 }}
                         className="p-16 rounded-[4rem] cyber-glass border border-white/10 relative overflow-hidden"
                     >
+                        <BorderBeam size={400} duration={12} delay={0} colorFrom="#00f2fe" colorTo="#ff0080" />
                         {/* Decorative Corner Brackets */}
                         <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-aurora-cyan/30 rounded-tl-3xl"></div>
                         <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-aurora-cyan/30 rounded-tr-3xl"></div>

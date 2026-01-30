@@ -13,6 +13,10 @@ import {
   Globe
 } from "lucide-react";
 import { useRef } from "react";
+import { BorderBeam } from "@/components/border-beam";
+import BrandIcon from "@/components/BrandIcon";
+
+import { GridScan } from "@/components/grid-scan";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -25,56 +29,54 @@ export default function Home() {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-[#050505] text-white selection:bg-aurora-cyan/30">
-      <div className="mesh-bg opacity-50"></div>
+    <div ref={containerRef} className="relative min-h-screen text-white">
+      <GridScan
+        scanColor="#ff0080"
+        linesColor="#4facfe"
+        gridScale={0.5}
+        uTilt={-0.3}
+        scanOpacity={0.7}
+        scanGlow={2.5}
+      />
 
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-aurora-cyan/20 blur-[80px] rounded-full animate-float"></div>
-      <div className="absolute top-[40%] right-20 w-48 h-48 bg-aurora-rose/20 blur-[100px] rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
-
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-[100] px-8 py-6 flex justify-between items-center bg-[#050505]/40 backdrop-blur-md border-b border-white/5">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 cyber-glass rounded-xl flex items-center justify-center border border-white/10 group">
-            <Binary className="text-aurora-cyan group-hover:rotate-12 transition-transform" size={24} />
+      {/* Hero Refined Navbar */}
+      <nav className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-5xl">
+        <div className="cyber-glass rounded-full px-8 py-4 flex justify-between items-center border border-white/10 shadow-2xl">
+          <div className="flex items-center gap-3">
+            <BrandIcon size="sm" />
+            <span className="text-xl font-black tracking-tighter uppercase">
+              Sen<span className="aurora-text">tira</span>
+            </span>
           </div>
-          <span className="text-2xl font-black tracking-tighter uppercase">
-            Senti<span className="aurora-text">Wave</span>
-          </span>
-        </div>
-        <div className="hidden md:flex gap-10 items-center text-xs font-black uppercase tracking-widest text-white/50">
-          <Link href="#tech" className="hover:text-aurora-cyan transition-colors">Technology</Link>
-          <Link href="#features" className="hover:text-aurora-rose transition-colors">Protocol</Link>
-          <Link href="/dashboard">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 cyber-glass border border-white/10 text-white rounded-full flex items-center gap-2 hover:border-aurora-cyan/50 hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all"
-            >
-              Enterprise Portal <ArrowRight size={16} />
-            </motion.button>
-          </Link>
+          <div className="hidden md:flex gap-8 items-center text-[10px] font-black uppercase tracking-widest text-white/40">
+            <Link href="#tech" className="hover:text-aurora-cyan transition-colors">Technology</Link>
+            <Link href="#features" className="hover:text-aurora-rose transition-colors">Protocol</Link>
+            <Link href="/dashboard">
+              <button className="px-5 py-2.5 bg-white text-black rounded-full font-black text-[9px] hover:scale-105 transition-all uppercase">
+                Enterprise Portal
+              </button>
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <main className="relative z-10 pt-48">
+      <main className="relative z-10 pt-56">
         {/* Hero Section */}
         <section className="px-8 pb-32 flex flex-col items-center text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] overflow-hidden group"
+            className="mb-8 px-4 py-1.5 rounded-full border border-white/5 bg-white/5 flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em]"
           >
-            <div className="w-2 h-2 rounded-full bg-aurora-rose animate-ping"></div>
-            <span>V2.0 Protocol Active • Gemini Flash 2.5</span>
-            <div className="ml-2 w-px h-3 bg-white/20"></div>
-            <span className="opacity-40 group-hover:opacity-100 transition-opacity">Neural Core Synced</span>
+            <div className="w-1.5 h-1.5 rounded-full bg-aurora-rose animate-ping"></div>
+            <span>V2.0 Protocol Active</span>
+            <div className="w-px h-3 bg-white/10"></div>
+            <span className="text-aurora-cyan">Gemini 2.5 Enabled</span>
           </motion.div>
 
           <motion.h1
             style={{ y, opacity }}
-            className="text-7xl md:text-[9rem] font-black leading-[0.85] tracking-tighter mb-12 uppercase"
+            className="text-6xl md:text-[8rem] font-black leading-[0.9] tracking-tighter mb-12 uppercase italic"
           >
             Decoding<br />
             <span className="aurora-text">Sentiment.</span>
@@ -83,75 +85,72 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="text-lg md:text-2xl text-white/40 max-w-2xl font-medium leading-relaxed mb-16 px-4"
+            transition={{ delay: 0.3 }}
+            className="text-lg md:text-xl text-white/40 max-w-2xl font-medium leading-relaxed mb-16 px-4"
           >
-            The next-generation multimodal framework for social media bias detection,
-            driven by state-of-the-art AI temporal reasoning.
+            A high-fidelity multimodal framework for social media bias detection,
+            driven by state-of-the-art AI temporal reasoning and narrative extraction.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-8 items-center"
+            transition={{ delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-6 items-center"
           >
-            <Link href="/dashboard" className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-aurora-cyan via-aurora-blue to-aurora-rose rounded-2xl blur opacity-60 group-hover:opacity-100 transition duration-1000"></div>
-              <button className="relative px-12 py-6 bg-black text-white text-xl font-black rounded-xl uppercase tracking-widest flex items-center gap-4 transition-transform hover:scale-[1.02]">
-                Launch System <Zap size={24} className="fill-white" />
+            <Link href="/dashboard">
+              <button className="relative px-12 py-6 bg-white text-black text-lg font-black rounded-2xl uppercase tracking-widest transition-transform hover:scale-105 shadow-[0_0_40px_rgba(255,255,255,0.15)]">
+                Launch Console
               </button>
             </Link>
-            <button className="px-10 py-5 cyber-glass border border-white/10 text-white font-bold rounded-xl uppercase tracking-widest hover:bg-white/5 transition-all">
+            <button className="px-10 py-6 cyber-glass border border-white/10 text-white font-black text-sm rounded-2xl uppercase tracking-widest hover:bg-white/5 transition-all">
               Documentation
             </button>
           </motion.div>
         </section>
 
-        {/* Real-time Visualization Mockup */}
-        <section className="px-8 max-w-7xl mx-auto mb-48">
+        {/* Console Preview Area */}
+        <section className="px-8 max-w-6xl mx-auto mb-48">
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative rounded-[3rem] cyber-glass border border-white/10 p-2 overflow-hidden shadow-[0_0_100px_rgba(0,242,254,0.1)]"
+            className="relative rounded-[3rem] cyber-glass border border-white/10 p-4 aspect-video overflow-hidden shadow-2xl"
           >
-            <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-aurora-cyan to-transparent"></div>
-            <div className="aspect-[21/9] w-full bg-[#080808] rounded-[2.5rem] flex items-center justify-center relative overflow-hidden">
-              {/* System Nodes UI Mockup */}
-              <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+            <BorderBeam size={400} duration={15} colorFrom="#00f2fe" colorTo="#ff0080" />
+            <div className="w-full h-full bg-[#080808]/50 rounded-[2.5rem] flex flex-col items-center justify-center relative">
+              <div className="absolute top-8 left-8 flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500/20"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/20"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/20"></div>
               </div>
-              <div className="text-center z-10 space-y-4">
-                <Cpu className="text-aurora-cyan animate-pulse mx-auto" size={64} />
-                <p className="text-white/20 font-black tracking-[0.5em] uppercase text-xs">Awaiting Neural Link</p>
-              </div>
+              <Cpu className="text-aurora-cyan/20 mb-4" size={64} />
+              <p className="text-white/10 font-black tracking-[0.5em] uppercase text-xs">Waiting for Neural Uplink</p>
             </div>
           </motion.div>
         </section>
 
-        {/* Technical Features Grid */}
-        <section id="tech" className="px-8 max-w-7xl mx-auto py-32">
-          <div className="grid md:grid-cols-4 gap-8">
+        {/* Tactical Features Grid */}
+        <section id="tech" className="px-8 max-w-7xl mx-auto pb-48">
+          <div className="grid md:grid-cols-4 gap-6">
             <TechCard
               icon={<ShieldCheck className="text-aurora-cyan" />}
               title="Bias Protocol"
-              desc="Detection of cherry-picking information with timestamped evidence."
+              desc="Deep-layer detection of cherry-picked narratives and framing."
             />
             <TechCard
               icon={<Activity className="text-aurora-rose" />}
               title="Temporal Flow"
-              desc="Deep analysis of emotional shifts throughout video progression."
+              desc="Real-time analysis of emotional peaks throughout source media."
             />
             <TechCard
               icon={<Eye className="text-aurora-blue" />}
               title="Visual Logic"
-              desc="Decoding micro-expressions and manipulative framing patterns."
+              desc="Decoding micro-expressions and manipulative camera framing."
             />
             <TechCard
               icon={<Globe className="text-white" />}
-              title="Hashtag Pulse"
-              desc="Comparative source analysis across global social ecosystems."
+              title="Global Archive"
+              desc="Cross-platform sentiment mining across digital ecosystems."
             />
           </div>
         </section>
@@ -165,14 +164,14 @@ function TechCard({ icon, title, desc }: { icon: React.ReactNode, title: string,
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="p-10 rounded-[2.5rem] cyber-glass border border-white/5 hover:border-white/20 transition-all group"
+      className="p-10 rounded-[2.5rem] cyber-glass border border-white/5 hover:border-aurora-cyan/20 transition-all group relative overflow-hidden"
     >
-      <div className="mb-8 p-5 rounded-2xl bg-white/5 inline-block group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all">
+      <BorderBeam size={150} duration={10} colorFrom="#00f2fe" colorTo="transparent" />
+      <div className="mb-8 p-4 rounded-xl bg-white/5 inline-block transition-transform group-hover:scale-110">
         {icon}
       </div>
-      <h3 className="text-xl font-black mb-4 uppercase tracking-tight italic">{title}</h3>
-      <p className="text-sm text-white/40 leading-relaxed font-medium">{desc}</p>
+      <h3 className="text-lg font-black mb-3 uppercase tracking-tight italic">{title}</h3>
+      <p className="text-xs text-white/40 leading-relaxed font-medium">{desc}</p>
     </motion.div>
   );
 }
