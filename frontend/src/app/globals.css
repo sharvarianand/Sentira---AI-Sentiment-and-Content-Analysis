@@ -15,6 +15,15 @@
   --foreground: #ffffff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  scroll-margin-top: 150px;
+  /* Increased margin to ensure sections land well below the floating navbar */
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
@@ -54,6 +63,39 @@ body {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  animation: gradient-x 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
 }
 
 /* Custom Scrollbar */

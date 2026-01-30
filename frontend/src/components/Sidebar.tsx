@@ -15,6 +15,8 @@ import {
 } from "lucide-react";
 import { BorderBeam } from "./border-beam";
 import BrandIcon from "./BrandIcon";
+import { UserButton, SignOutButton } from "@clerk/nextjs";
+import { LogOut } from "lucide-react";
 
 const NAV_ITEMS = [
     { icon: <LayoutDashboard size={18} />, label: "Pulse", href: "/dashboard" },
@@ -26,8 +28,9 @@ const NAV_ITEMS = [
 
 export default function Sidebar() {
     const pathname = usePathname();
+    const isFullWidthPage = pathname === "/" || pathname.startsWith("/sign-in") || pathname.startsWith("/sign-up") || pathname.startsWith("/docs");
 
-    if (pathname === "/") return null;
+    if (isFullWidthPage) return null;
 
     return (
         <aside className="fixed left-0 top-0 bottom-0 w-64 bg-[#030303]/80 backdrop-blur-2xl border-r border-white/5 z-50 flex flex-col p-6 overflow-hidden">
@@ -73,8 +76,8 @@ export default function Sidebar() {
                 })}
             </nav>
 
-            {/* Status Card */}
-            <div className="mt-auto pt-6">
+            {/* Status & User Section */}
+            <div className="mt-auto space-y-4 pt-6">
                 <div className="p-6 rounded-[2rem] bg-white/5 border border-white/10 space-y-4 relative overflow-hidden group">
                     <div className="absolute inset-0 bg-gradient-to-br from-aurora-cyan/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <div className="flex items-center justify-between relative z-10">
@@ -91,6 +94,29 @@ export default function Sidebar() {
                         </div>
                         <p className="text-[9px] font-bold text-white/30 uppercase tracking-tighter">Usage Status: 75% Peak</p>
                     </div>
+                </div>
+
+                <div className="flex items-center justify-between px-2 py-4 border-t border-white/5">
+                    <div className="flex items-center gap-3">
+                        <UserButton
+                            appearance={{
+                                elements: {
+                                    userButtonAvatarBox: "w-10 h-10 border border-white/10 rounded-xl hover:border-aurora-cyan/50 transition-all",
+                                    userButtonTrigger: "focus:shadow-none hover:scale-105 active:scale-95 transition-all"
+                                }
+                            }}
+                        />
+                        <div className="flex flex-col">
+                            <span className="text-[9px] font-black uppercase tracking-widest text-white">Active Node</span>
+                            <span className="text-[8px] font-bold uppercase text-white/20 tracking-tighter">Identity Verified</span>
+                        </div>
+                    </div>
+
+                    <SignOutButton>
+                        <button className="p-3 rounded-xl bg-white/5 border border-white/5 text-white/20 hover:text-aurora-rose hover:border-aurora-rose/20 transition-all cursor-pointer group">
+                            <LogOut size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                        </button>
+                    </SignOutButton>
                 </div>
             </div>
         </aside>
