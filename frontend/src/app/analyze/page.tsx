@@ -84,7 +84,6 @@ export default function AnalyzePage() {
                         exit={{ opacity: 0, y: -20 }}
                         className="p-16 rounded-[4rem] cyber-glass border border-white/10 relative overflow-hidden"
                     >
-                        <BorderBeam size={400} duration={12} delay={0} colorFrom="#00f2fe" colorTo="#ff0080" />
                         {/* Decorative Corner Brackets */}
                         <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-aurora-cyan/30 rounded-tl-3xl"></div>
                         <div className="absolute top-8 right-8 w-12 h-12 border-t-2 border-r-2 border-aurora-cyan/30 rounded-tr-3xl"></div>

@@ -60,7 +60,7 @@ export default function ReportsPage() {
                                 <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/30">Extraction Layers</h3>
                                 <OptionToggle label="Sentiment Waves" active={true} />
                                 <OptionToggle label="Bias Evidence Map" active={true} />
-                                <OptionToggle label="Temporal Paradoxes" active={false} />
+                                <OptionToggle label="Fact Check Evidence" active={true} />
                                 <OptionToggle label="Gemini Reasoning" active={true} />
                             </div>
 

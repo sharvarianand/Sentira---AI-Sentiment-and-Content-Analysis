@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import { Providers } from "@/components/Providers";
 import MainWrapper from "@/components/MainWrapper";
 
 const inter = Inter({
@@ -25,7 +25,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ClerkProvider>
+        <Providers>
             <html lang="en">
                 <body
                     className={`${inter.variable} ${spaceGrotesk.variable} antialiased selection:bg-aurora-cyan/30 min-h-screen bg-[#030303] text-white`}
@@ -35,6 +35,6 @@ export default function RootLayout({
                     </MainWrapper>
                 </body>
             </html>
-        </ClerkProvider>
+        </Providers>
     );
 }
